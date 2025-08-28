@@ -2,16 +2,13 @@
 const Hero = () => {
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Background Image */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(/public/hero-bg.jpg)` }}
             />
 
-            {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/60" />
 
-            {/* Content */}
             <div className="relative z-10 container mx-auto px-4 text-center">
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
@@ -49,7 +46,6 @@ const Hero = () => {
                 </div>
             </div>
 
-            {/* Scroll Indicator */}
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
                 <div className="w-6 h-10 border-2 border-dark-tile-secondary rounded-full flex justify-center">
                     <div className="w-1 h-3 bg-dark-tile-secondary rounded-full mt-2"></div>

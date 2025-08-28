@@ -1,7 +1,8 @@
 // import { Outlet } from "react-router-dom";
-import Hero from "./components/Hero";
-import ClassesCard from "./components/ClassesCard";
-import Header from "./components/navigation/header";
+import Hero from "./components/content/heroes/landingHero";
+import ClassesCard from "./components/content/cards/classesCard";
+import Header from "./components/layout/header";
+import { LandingSection } from "./components/layout/landingSection";
 
 export default function App() {
   return (
@@ -9,7 +10,7 @@ export default function App() {
       <Header />
       <main >
         <Hero />
-        <section className="min-h-screen flex my-18 overflow-hidden flex-col">
+        <LandingSection>
           <h2 className="font-semibold text-center text-6xl mb-4 text-dark-tile-secondary">Aulas</h2>
           <p className="text-xl md:text-2xl text-dark-text-primary mb-8 max-w-2xl mx-auto text-center">
             De iniciantes completos a competidores experientes, temos o programa perfeito para a tua jornada.
@@ -68,7 +69,7 @@ export default function App() {
             />
           </div>
 
-        </section>
+        </LandingSection>
       </main >
     </>
   );
