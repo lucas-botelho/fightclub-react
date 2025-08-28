@@ -25,6 +25,11 @@ export default function App() {
                 <circle cx="12" cy="12" r="6"></circle>,
                 <circle cx="12" cy="12" r="2"></circle>
               ]}
+              whatYouWillLearn={["Fundamentos do Jiu-Jitsu",
+                "Técnicas de defesa pessoal",
+                "Posições básicas e avançadas",
+                "Estratégias de competição",
+                "Condicionamento físico",]}
             />
 
             <ClassesCard
@@ -38,6 +43,11 @@ export default function App() {
                 <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>,
                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
               ]}
+              whatYouWillLearn={["Fundamentos do Jiu-Jitsu",
+                "Técnicas de defesa pessoal",
+                "Posições básicas e avançadas",
+                "Estratégias de competição",
+                "Condicionamento físico",]}
             />
 
             <ClassesCard
@@ -50,6 +60,11 @@ export default function App() {
                 <circle cx="12" cy="12" r="6"></circle>,
                 <circle cx="12" cy="12" r="2"></circle>
               ]}
+              whatYouWillLearn={["Fundamentos do Jiu-Jitsu",
+                "Técnicas de defesa pessoal",
+                "Posições básicas e avançadas",
+                "Estratégias de competição",
+                "Condicionamento físico",]}
             />
           </div>
 

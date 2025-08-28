@@ -6,6 +6,7 @@ type SvgTextCardProps = {
     duration: string;
     schedule: string;
     svg: React.ReactNode[];
+    whatYouWillLearn: string[];
 };
 
 const ClassesCard: React.FC<SvgTextCardProps> = (props) => {
@@ -29,6 +30,16 @@ const ClassesCard: React.FC<SvgTextCardProps> = (props) => {
                     <strong className="text-dark-title-primary">Horário:</strong> {schedule}
                 </div>
             </div>
+            <div className="space-y-4 mb-4 mt-4">
+                <p className='text-dark-title-primary '>O que vais aprender: </p>
+                <ul className="list-disc list-inside text-dark-text-primary space-y-2 marker:text-dark-tile-secondary text-lg">
+                    {props.whatYouWillLearn.map((text, idx) => (
+                        <li key={idx}>{text}</li>
+                    ))}
+
+                </ul>
+            </div>
+
         </div>
     );
 };
