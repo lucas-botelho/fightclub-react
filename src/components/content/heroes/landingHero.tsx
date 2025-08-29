@@ -13,7 +13,7 @@ const Hero = () => {
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
                         FIGHT CLUB BJJ
-                        <span className="block text-dark-tile-secondary">ACADEMY</span>
+                        <span className="block text-dark-title-secondary">ACADEMY</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-dark-text-primary mb-8 max-w-2xl mx-auto">
                         Domina a arte do Jiu-Jitsu brasileiro com instrutores de alto nível.<br />
@@ -31,15 +31,15 @@ const Hero = () => {
 
                     <div className="mt-12 grid grid-cols-3 gap-8 max-w-md mx-auto text-center">
                         <div>
-                            <div className="text-3xl font-bold text-dark-tile-secondary">500+</div>
+                            <div className="text-3xl font-bold text-dark-title-secondary">500+</div>
                             <p className="text-gray-300">Alunos</p>
                         </div>
                         <div>
-                            <div className="text-3xl font-bold text-dark-tile-secondary">10+</div>
+                            <div className="text-3xl font-bold text-dark-title-secondary">10+</div>
                             <p className="text-gray-300">Anos</p>
                         </div>
                         <div>
-                            <div className="text-3xl font-bold text-dark-tile-secondary">50+</div>
+                            <div className="text-3xl font-bold text-dark-title-secondary">50+</div>
                             <p className="text-gray-300">Campeões</p>
                         </div>
                     </div>
@@ -47,8 +47,8 @@ const Hero = () => {
             </div>
 
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <div className="w-6 h-10 border-2 border-dark-tile-secondary rounded-full flex justify-center">
-                    <div className="w-1 h-3 bg-dark-tile-secondary rounded-full mt-2"></div>
+                <div className="w-6 h-10 border-2 border-dark-title-secondary rounded-full flex justify-center">
+                    <div className="w-1 h-3 bg-dark-title-secondary rounded-full mt-2"></div>
                 </div>
             </div>
         </section>
