@@ -6,6 +6,7 @@ type CardProps = {
     specialties: string[];
     description: string;
     titles: string[];
+    image?: string;
 }
 
 const InstructorCard: React.FC<CardProps> = (props) => {
@@ -13,7 +14,7 @@ const InstructorCard: React.FC<CardProps> = (props) => {
         <div className="border border-solid border-[#333333] rounded-lg hover-lift">
             <div className="relative w-full overflow-hidden rounded-t-lg md:h-96">
                 <img
-                    src="hero-bg.jpg"
+                    src={props.image || "instructor.jpg"}
                     alt="Instructor"
                     className="absolute inset-0 w-full h-full object-cover object-top block"
                 />
@@ -30,8 +31,8 @@ const InstructorCard: React.FC<CardProps> = (props) => {
                 <div className=" inline-flex flex-wrap space-x-2 space-y-1 ">
                     {props.specialties.map((s, i) => <div className="text-dark-title-secondary border rounded-full w-max px-3 py-0.5 text-sm " key={i}>{s}</div>)}
                 </div>
-                <p className="text-dark-text-primary text-sm leading-relaxed">{props.description}</p>
-                <div className="text-dark-title-primary text-sm">{props.titles.join(", ")}</div>
+                <p className="text-dark-text-primary text-base leading-relaxed">{props.description}</p>
+                <div className="text-dark-title-primary text-base">{props.titles.join(", ")}</div>
             </div>
         </div>
     );
