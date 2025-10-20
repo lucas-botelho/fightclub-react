@@ -9,7 +9,7 @@ export default function LandingPage() {
     return (
         <>
             <Hero />
-            <LandingSection>
+            <LandingSection id="classes">
                 <MainTitle text="Aulas" />
                 <SubTitle text="Descobre as nossas aulas de projetadas para todos os níveis e idades." />
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-xl ">
@@ -17,7 +17,11 @@ export default function LandingPage() {
                         title={"Gi"}
                         description={"Perfect for beginners. Learn basic positions, escapes, and submissions in a supportive environment."}
                         duration={"60 minutos"}
-                        schedule={"Mon, Wed, Fri - 6:00 PM"}
+                        schedule={[
+                            "Terças e Quintas - 12:15",
+                            "Sextas - 19:15",
+                            "Segundas, Terças, Quintas - 21:15"
+                        ]}
                         svg={[
                             <circle cx="12" cy="12" r="10"></circle>,
                             <circle cx="12" cy="12" r="6"></circle>,
@@ -34,7 +38,11 @@ export default function LandingPage() {
                         title={"No-Gi"}
                         description={"High-intensity training for experienced practitioners. Complex techniques and live rolling."}
                         duration={"60 minutos"}
-                        schedule={"Tue, Thu - 7:00 PM"}
+                        schedule={[
+                            "Terças e Quintas - 12:15",
+                            "Sextas - 19:15",
+                            "Segundas, Terças, Quintas - 21:15"
+                        ]}
                         svg={[
                             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>,
                             <circle cx="9" cy="7" r="4"></circle>,
@@ -52,7 +60,10 @@ export default function LandingPage() {
                         title={"Kids"}
                         description={"Fun and engaging classes for children ages 6-15. Focus on discipline, respect, and fitness."}
                         duration={"60 minutos"}
-                        schedule={"Sat - 10:00 AM"}
+                        schedule={[
+                            "Terças - 18:30 e 19h30",
+                            "Sextas  - 18:30",
+                        ]}
                         svg={[
                             <circle cx="12" cy="12" r="10"></circle>,
                             <circle cx="12" cy="12" r="6"></circle>,
@@ -66,7 +77,7 @@ export default function LandingPage() {
                     />
                 </div>
             </LandingSection>
-            <LandingSection>
+            <LandingSection id="instructors">
                 <MainTitle text="Conhece os teus instrutores" />
                 <SubTitle text="Aprende com instrutores de classe mundial, apaixonados por ensinar e dedicados ao teu crescimento." />
                 <div className=" grid grid-cols-1 md:grid-cols-3 gap-8 text-xl">
@@ -75,30 +86,30 @@ export default function LandingPage() {
                         belt="Faixa Preta"
                         specialties={["Auto-defesa", "Fundamentos", "Competição"]}
                         description="Mais de 30 anos de experiência. Campeão nacional, vice-campeão europeu e professor de natação. Fábio é o exemplo vivo da força do desporto na construção de comunidades mais fortes."
-                        titles={["Portugal Open"]}
-                        image="instructor.jpg"
+                        titles={["ibjjf 🥇3x 🥈1x ", "fpjjb 🥇3x 🥈5x ", "sjjif 🥇3x"]}
+                        image="instructor0.jpg"
                     />
                     <InstructorCard
-                        name="Maria Silva"
-                        belt="Faixa Roxa"
+                        name="Max Fersan"
+                        belt="Faixa Preta"
                         specialties={["Técnicas Avançadas", "Estratégias de Luta"]}
-                        description="Com uma abordagem única ao ensino, Maria combina técnica e filosofia para ajudar os alunos a alcançarem o seu potencial máximo."
-                        titles={["Campeonato Nacional"]}
+                        description="Com uma abordagem única ao ensino, Max combina técnica e filosofia para ajudar os alunos a alcançarem o seu potencial máximo."
+                        titles={["ibjjf 🥇3x 🥈1x ", "fpjjb 🥇3x 🥈5x ", "sjjif 🥇3x"]}
+                        image="instructor2.jpg"
                     />
                     <InstructorCard
                         name="Gonçalo Pinto"
                         belt="Faixa Castanha"
                         specialties={["Defesa Pessoal", "Técnicas de Chão"]}
                         description="Gonçalo é conhecido pela sua abordagem prática e eficaz ao ensino, ajudando os alunos a aplicarem técnicas em situações reais."
-                        titles={["Campeonato Regional"]}
+                        titles={["ibjjf 🥇3x 🥈1x ", "fpjjb 🥇3x 🥈5x ", "sjjif 🥇3x"]}
                         image="instructor1.jpg"
-
                     />
 
                 </div>
 
             </LandingSection>
-            <LandingSection>
+            <LandingSection id="membership">
                 <MainTitle text="Junta-te a nós" />
                 <div className=" grid grid-cols-1 md:grid-cols-3 gap-8 text-xl my-8">
                     <div className="rounded-lg border border-solid border-[#333333] p-6 flex flex-col items-center hover-lift">

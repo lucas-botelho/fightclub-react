@@ -32,7 +32,10 @@ const InstructorCard: React.FC<CardProps> = (props) => {
                     {props.specialties.map((s, i) => <div className="text-dark-title-secondary border rounded-full w-max px-3 py-0.5 text-sm " key={i}>{s}</div>)}
                 </div>
                 <p className="text-dark-text-primary text-base leading-relaxed">{props.description}</p>
-                <div className="text-dark-title-primary text-base">{props.titles.join(", ")}</div>
+                <div className="flex flex-row align-center">
+                    <div className="text-dark-title-primary text-base  mr-2">Titulos: </div>
+                    <div className=" text-sm ">{props.titles.join(", ")}</div>
+                </div>
             </div>
         </div>
     );

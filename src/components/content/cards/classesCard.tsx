@@ -4,7 +4,7 @@ type SvgTextCardProps = {
     title: string;
     description: string;
     duration: string;
-    schedule: string;
+    schedule: string[];
     svg: React.ReactNode[];
     whatYouWillLearn: string[];
 };
@@ -27,7 +27,11 @@ const ClassesCard: React.FC<SvgTextCardProps> = (props) => {
                     {duration}
                 </div>
                 <div className="text-sm">
-                    <strong className="text-dark-title-primary">Horário:</strong> {schedule}
+                    <strong className="text-dark-title-primary">Horário:</strong> {schedule.map((time, index) => (
+                        <div key={index}>
+                            {time}
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className="space-y-4 mb-4 mt-4">

@@ -6,10 +6,9 @@ export default function Navbar() {
 
     return (
         <nav className="flex flex-row gap-8 font-medium text-xl items-center">
-            <div>Aulas</div>
-            <div>Hórarios</div>
-            <div>Mensalidades</div>
-            <div>Professores</div>
+            <a href="#classes">Aulas </a>
+            <a href="#membership">Mensalidades</a>
+            <a href="#instructors">Professores</a>
             <button className="btn-header" onClick={() => navigate("/signup")}>Login</button>
         </nav>
     )
