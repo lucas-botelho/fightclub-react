@@ -1,16 +1,16 @@
-import { auth } from '../../../config/firebase';
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useEffect, useState } from "react";
+// import { auth } from '../../../config/firebase';
+// import { signInWithEmailAndPassword } from "firebase/auth";
+// import { useEffect, useState } from "react";
 
 export default function SignUp() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [error, setError] = useState("");
 
-    const onSubmit = async (e: React.FormEvent) => {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        localStorage.setItem("token", await userCredential.user.getIdToken());
-    }
+    // const onSubmit = async (e: React.FormEvent) => {
+    //     const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    //     localStorage.setItem("token", await userCredential.user.getIdToken());
+    // }
 
     return (
         <div className=" flex flex-col h-screen w-screen items-center justify-center">
