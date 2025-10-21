@@ -21,6 +21,27 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* ensure header is fixed and uses the same height */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    z-index: 50; /* make sure it sits above the hero */
+  }
+
+  /* make all sections except the first start below the fixed header
+     so header only overlaps the first (hero) section */
+  section:not(:first-of-type) {
+    padding-top: calc(var(--header-height) + 1rem); /* + gap you want */
+  }
+
+  /* if you have a main element that should also start below header for non-first children */
+  main > section:not(:first-of-type) {
+    padding-top: calc(var(--header-height) + 1rem);
+  }
 }
 
 /* Custom root layout class for your app */
@@ -51,11 +72,16 @@ nav div {
   border: 1px solid var(--color-dark-title-secondary);
 }
 
-.hover-lift {
+/* .hover-lift {
   @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-dark-title-secondary;
-}
+} */
 
 .text-border-dark {
   text-shadow: -1px -1px 0 #141414, 1px -1px 0 #141414, -1px 1px 0 #141414,
     1px 1px 0 #141414;
+}
+
+:root {
+  /* set header height once (adjust to your header height) */
+  --header-height: 4rem; /* 64px */
 }

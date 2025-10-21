@@ -1,13 +1,83 @@
-import Navbar from "../navigation/navbar";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Header() {
+    const [open, setOpen] = useState(false);
+    const links = [
+        { to: "#home", label: "Home" },
+        { to: "#classes", label: "Classes" },
+        { to: "#instructors", label: "Instructors" },
+        { to: "#membership", label: "Mensalidades" },
+    ];
 
-    return <>
-        <header className="fixed top-0 left-0 w-full z-50 p-4 flex flex-row justify-between items-center bg-dark-background-primary/50 backdrop-blur-sm border-b">
-            <div className="flex flex-row items-center gap-4">
-                <img src="/logo.jpg" alt="Fight Club BJJ Logo" className="h-10 w-auto " />
-                <div className="text-dark-title-primary font-bold text-xl">FIGHT CLUB BJJ</div>
+    return (
+        <>
+            <header className="fixed top-0 left-0 w-full z-50 p-4 flex items-center bg-dark-background-primary/50 backdrop-blur-sm border-b">
+
+                {/* Logo (left) */}
+                <div className="flex items-center gap-4">
+                    <img src="/logo.jpg" alt="Fight Club BJJ Logo" className="h-10 w-auto " />
+                    <div className="text-dark-title-primary font-bold text-xl">FIGHT CLUB BJJ</div>
+                </div>
+
+                {/* Right side: nav + mobile toggle */}
+                <div className="ml-auto flex items-center gap-4">
+                    <nav className="hidden md:flex flex-row gap-8 font-medium text-xl items-center">
+                        {links.map((link) => (
+                            <a key={link.to} href={link.to} className="text-dark-text-primary hover:text-dark-title-secondary">
+                                {link.label}
+                            </a>
+                        ))}
+                    </nav>
+
+                    {/* Mobile burger */}
+                    <button
+                        className="md:hidden p-2 rounded-md focus:outline-none"
+                        aria-label="Toggle menu"
+                        onClick={() => setOpen((s) => !s)}
+                    >
+                        {open ? (
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-dark-title-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        ) : (
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-dark-title-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        )}
+                    </button>
+                </div>
+            </header>
+
+            {/* Mobile menu (slides down under header) */}
+            <div
+                className={`md:hidden absolute left-0 right-0 top-[var(--header-height)] bg-dark-background-primary border-t border-[#333] transform transition-all origin-top ${open ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"
+                    }`}
+            >
+                <nav className="flex flex-col gap-2 py-4 px-4">
+                    {links.map((l) => (
+                        <NavLink
+                            key={l.to}
+                            to={l.to}
+                            onClick={() => setOpen(false)}
+                            className={({ isActive }) =>
+                                `py-2 ${isActive ? "text-dark-title-secondary" : "text-dark-text-primary"}`
+                            }
+                        >
+                            {l.label}
+                        </NavLink>
+                    ))}
+
+                    <div className="flex gap-2 mt-3">
+                        <Link to="/signin" onClick={() => setOpen(false)} className="btn-header flex-1 text-center">
+                            Sign in
+                        </Link>
+                        <Link to="/signup" onClick={() => setOpen(false)} className="btn-header flex-1 text-center">
+                            Sign up
+                        </Link>
+                    </div>
+                </nav>
             </div>
-            <Navbar />
-        </header></>
+        </>
+    );
 }
