@@ -32,8 +32,9 @@ export default function Header() {
 
                     {/* Mobile burger */}
                     <button
-                        className="md:hidden p-2 rounded-md focus:outline-none"
+                        className="block md:hidden p-2 rounded-md focus:outline-none z-50"
                         aria-label="Toggle menu"
+                        aria-expanded={open}
                         onClick={() => setOpen((s) => !s)}
                     >
                         {open ? (
@@ -49,35 +50,18 @@ export default function Header() {
                 </div>
             </header>
 
-            {/* Mobile menu (slides down under header) */}
-            <div
-                className={`md:hidden absolute left-0 right-0 top-[var(--header-height)] bg-dark-background-primary border-t border-[#333] transform transition-all origin-top ${open ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"
-                    }`}
-            >
-                <nav className="flex flex-col gap-2 py-4 px-4">
-                    {links.map((l) => (
-                        <NavLink
-                            key={l.to}
-                            to={l.to}
-                            onClick={() => setOpen(false)}
-                            className={({ isActive }) =>
-                                `py-2 ${isActive ? "text-dark-title-secondary" : "text-dark-text-primary"}`
-                            }
-                        >
-                            {l.label}
-                        </NavLink>
-                    ))}
-
-                    <div className="flex gap-2 mt-3">
-                        <Link to="/signin" onClick={() => setOpen(false)} className="btn-header flex-1 text-center">
-                            Sign in
-                        </Link>
-                        <Link to="/signup" onClick={() => setOpen(false)} className="btn-header flex-1 text-center">
-                            Sign up
-                        </Link>
-                    </div>
-                </nav>
-            </div>
+            {/* Mobile menu (shows under header) */}
+            {open && (
+                <div className="md:hidden absolute left-0 right-0 top-[var(--header-height)] bg-dark-background-primary border-t border-[#333] z-40">
+                    <nav className="flex flex-col gap-2 py-4 px-4">
+                        {links.map((l) => (
+                            <a key={l.to} href={l.to} onClick={() => setOpen(false)} className="py-2 text-dark-text-primary hover:text-dark-title-secondary">
+                                {l.label}
+                            </a>
+                        ))}
+                    </nav>
+                </div>
+            )}
         </>
     );
 }
