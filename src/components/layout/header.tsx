@@ -12,7 +12,7 @@ export default function Header() {
 
     return (
         <>
-            <header className="fixed top-0 left-0 w-full z-50 p-4 flex items-center bg-dark-background-primary/50 backdrop-blur-sm border-b">
+            <header className="fixed top-0 left-0 w-full z-60 p-4 flex items-center bg-dark-background-primary/50 backdrop-blur-sm border-b">
 
                 {/* Logo (left) */}
                 <div className="flex items-center gap-4">
@@ -52,8 +52,8 @@ export default function Header() {
 
             {/* Mobile menu (shows under header) */}
             {open && (
-                <div className="md:hidden absolute left-0 right-0 top-[var(--header-height)] bg-dark-background-primary border-t border-[#333] z-40">
-                    <nav className="flex flex-col gap-2 py-4 px-4">
+                <div className="md:hidden fixed inset-0 pt-[var(--header-height)] bg-dark-background-primary/95 backdrop-blur-sm z-50">
+                    <nav className="flex flex-col gap-2 py-4 px-4 max-h-[calc(100vh- var(--header-height))] overflow-auto">
                         {links.map((l) => (
                             <a key={l.to} href={l.to} onClick={() => setOpen(false)} className="py-2 text-dark-text-primary hover:text-dark-title-secondary">
                                 {l.label}
