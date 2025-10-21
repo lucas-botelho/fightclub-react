@@ -4,9 +4,9 @@ import { Link, NavLink } from "react-router-dom";
 export default function Header() {
     const [open, setOpen] = useState(false);
     const links = [
-        { to: "#home", label: "Home" },
-        { to: "#classes", label: "Classes" },
-        { to: "#instructors", label: "Instructors" },
+        { to: "#home", label: "Início" },
+        { to: "#classes", label: "Aulas" },
+        { to: "#instructors", label: "Instrutores" },
         { to: "#membership", label: "Mensalidades" },
     ];
 
