@@ -34,7 +34,13 @@ const InstructorCard: React.FC<CardProps> = (props) => {
                 <p className="text-dark-text-primary text-base leading-relaxed">{props.description}</p>
                 <div className="flex flex-row align-center">
                     <div className="text-dark-title-primary text-base  mr-2">Titulos: </div>
-                    <div className=" text-sm ">{props.titles.join(", ")}</div>
+                    <div className=" inline-flex flex-wrap space-x-2 space-y-1 ">
+                        {props.titles.map((t, i) => (
+                            <div className="text-dark-title-secondary border rounded-full w-max px-3 py-0.5 text-sm" key={i}>
+                                {t}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

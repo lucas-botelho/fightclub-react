@@ -14,19 +14,21 @@ const ClassesCard: React.FC<SvgTextCardProps> = (props) => {
     return (
 
         <div className="p-8 rounded-lg bg-dark-background-secondary border border-solid border-[#333333] hover-lift  relative flex flex-col h-full">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-dark-title-secondary/10 rounded-lg mb-4 group-hover:bg-dark-title-secondary/20 transition-colors duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-target w-8 h-8 text-dark-title-secondary">
-                    {svg}
-                </svg>
+            <div className='flex flex-row space-x-8 items-center'>
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-dark-title-secondary/10 rounded-lg mb-4 group-hover:bg-dark-title-secondary/20 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-target w-8 h-8 text-dark-title-secondary">
+                        {svg}
+                    </svg>
+                </div>
+                <h3 className="text-4xl md:text-6xl font-bold mb-4 text-dark-title-primary">{title}</h3>
             </div>
-            <h3 className="text-6xl font-bold mb-4 text-dark-title-primary">{title}</h3>
             <p className="text-dark-text-primary pb-6">{description}</p>
             <div className="mt-auto space-y-4 mb-4">
-                <div className="flex items-center text-sm">
+                {/* <div className="flex items-center text-md">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-clock w-4 h-4 mr-2 text-dark-title-secondary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                     {duration}
-                </div>
-                <div className="text-sm">
+                </div> */}
+                <div className="text-base">
                     <strong className="text-dark-title-primary">Horário:</strong> {schedule.map((time, index) => (
                         <div key={index}>
                             {time}
@@ -36,7 +38,7 @@ const ClassesCard: React.FC<SvgTextCardProps> = (props) => {
             </div>
             <div className="space-y-4 mb-4 mt-4">
                 <p className='text-dark-title-primary '>O que vais aprender: </p>
-                <ul className="list-disc list-inside text-dark-text-primary space-y-2 marker:text-dark-title-secondary text-lg">
+                <ul className="list-disc list-inside text-dark-text-primary space-y-2 marker:text-dark-title-secondary text-base">
                     {props.whatYouWillLearn.map((text, idx) => (
                         <li key={idx}>{text}</li>
                     ))}

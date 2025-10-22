@@ -1,46 +1,56 @@
 
 const Hero = () => {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden" id="home">
-            <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(/hero-bg.jpg)` }}
-            />
+        <section className="relative min-h-screen flex items-center" id="home">
+            <div className="container mx-auto px-4">
+                <div className="flex flex-col md:flex-row items-center">
+                    {/* Left: text content (55% on md+) */}
+                    <div className="w-full md:w-[55%] py-12 md:py-24 text-center md:text-left ">
+                        <div className="max-w-3xl">
+                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-dark-title-primary mb-4">
+                                FIGHT CLUB BJJ
+                                <span className="block text-dark-title-secondary">Póvoa de Santa Iria</span>
+                            </h1>
+                            <p className="text-lg md:text-xl text-dark-text-primary mb-6 max-w-2xl">
+                                Domina a arte do Jiu-Jitsu brasileiro com instrutores de alto nível.
+                                <br />
+                                Desenvolve força, disciplina e confiança nos tatames.
+                            </p>
 
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/60" />
+                            <div className="flex flex-col sm:flex-row gap-4 justify-start items-center">
+                                <button className="btn-hero">
+                                    Torna-te Membro
+                                </button>
+                                <button className="btn-hero">
+                                    Aula Experimental
+                                </button>
+                            </div>
 
-            <div className="relative z-10 container mx-auto px-4 text-center">
-                <div className="max-w-4xl mx-auto">
-                    <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
-                        FIGHT CLUB BJJ
-                        <span className="block text-dark-title-secondary">ACADEMY</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-dark-text-primary mb-8 max-w-2xl mx-auto">
-                        Domina a arte do Jiu-Jitsu brasileiro com instrutores de alto nível.<br />
-                        Desenvolve força, disciplina e confiança nos tatames.
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <button className="btn-hero">
-                            Torna-te Membro
-                        </button>
-                        <button className="btn-hero">
-                            Aula Experimental
-                        </button>
+                            <div className="mt-10 grid grid-cols-3 gap-6 max-w-xs text-center md:text-left">
+                                <div>
+                                    <div className="text-2xl md:text-3xl font-bold text-dark-title-secondary">500+</div>
+                                    <p className="text-dark-text-primarytext-sm">Alunos</p>
+                                </div>
+                                <div>
+                                    <div className="text-2xl md:text-3xl font-bold text-dark-title-secondary">10+</div>
+                                    <p className="text-dark-text-primarytext-sm">Anos</p>
+                                </div>
+                                <div>
+                                    <div className="text-2xl md:text-3xl font-bold text-dark-title-secondary">50+</div>
+                                    <p className="text-dark-text-primarytext-sm">Campeões</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="mt-12 grid grid-cols-3 gap-8 max-w-md mx-auto text-center">
-                        <div>
-                            <div className="text-3xl font-bold text-dark-title-secondary">500+</div>
-                            <p className="text-gray-300">Alunos</p>
-                        </div>
-                        <div>
-                            <div className="text-3xl font-bold text-dark-title-secondary">10+</div>
-                            <p className="text-gray-300">Anos</p>
-                        </div>
-                        <div>
-                            <div className="text-3xl font-bold text-dark-title-secondary">50+</div>
-                            <p className="text-gray-300">Campeões</p>
+                    {/* Right: image (45% on md+) */}
+                    <div className="w-full md:w-[45%] mt-8 md:mt-0">
+                        <div
+                            className="h-64 md:h-[70vh] w-full bg-cover bg-center rounded-xl overflow-hidden shadow-lg"
+                            style={{ backgroundImage: `url(/hero-bg.jpg)` }}
+                        >
+                            {/* subtle overlay for contrast */}
+                            <div className="h-full w-full bg-gradient-to-t from-black/50 via-transparent to-black/30" />
                         </div>
                     </div>
                 </div>

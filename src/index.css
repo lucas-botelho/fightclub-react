@@ -33,13 +33,15 @@
   }
 
   /* make all sections except the first start below the fixed header
-     so header only overlaps the first (hero) section */
-  section:not(:first-of-type) {
-    padding-top: calc(var(--header-height) + 1rem); /* + gap you want */
+     so header does not overlap any section */
+  section {
+    padding-top: calc(
+      var(--header-height) + 1rem
+    ); /* header height + extra gap */
   }
 
-  /* if you have a main element that should also start below header for non-first children */
-  main > section:not(:first-of-type) {
+  /* if you have a main element that should also start below header */
+  main > section {
     padding-top: calc(var(--header-height) + 1rem);
   }
 }

@@ -15,65 +15,63 @@ export default function LandingPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-xl ">
                     <ClassesCard
                         title={"Gi"}
-                        description={"Perfect for beginners. Learn basic positions, escapes, and submissions in a supportive environment."}
+                        description={"Treino técnico e estratégico com o quimono tradicional, focado no controlo e nas finalizações."}
                         duration={"60 minutos"}
                         schedule={[
-                            "Terças e Quintas - 12:15",
-                            "Sextas - 19:15",
-                            "Segundas, Terças, Quintas - 21:15"
+                            "Terças e Quintas: 12:15 - 13:30",
+                            "Sextas: 19:15 - 20:30",
+                            "Segundas, Terças, Quintas: 21:15 - 22:30",
                         ]}
                         svg={[
-                            <circle cx="12" cy="12" r="10"></circle>,
-                            <circle cx="12" cy="12" r="6"></circle>,
-                            <circle cx="12" cy="12" r="2"></circle>
                         ]}
-                        whatYouWillLearn={["Fundamentos do Jiu-Jitsu",
-                            "Técnicas de defesa pessoal",
-                            "Posições básicas e avançadas",
-                            "Estratégias de competição",
-                            "Condicionamento físico",]}
+                        whatYouWillLearn={[
+                            "Controlo e pegadas com o quimono",
+                            "Transições entre posições com uso do Gi",
+                            "Técnicas de submissão e defesa clássicas",
+                            "Estratégias específicas de competição Gi",
+                            "Gestão de energia e postura durante o combate",
+                        ]}
                     />
 
                     <ClassesCard
                         title={"No-Gi"}
-                        description={"High-intensity training for experienced practitioners. Complex techniques and live rolling."}
+                        description={"Treino dinâmico sem quimono, com foco na agilidade, aderência e transições rápidas."}
                         duration={"60 minutos"}
                         schedule={[
-                            "Terças e Quintas - 12:15",
-                            "Sextas - 19:15",
-                            "Segundas, Terças, Quintas - 21:15"
+                            "Terças e Quintas: 12:15 - 13:30",
+                            "Sextas: 19:15 - 20:30",
+                            "Segundas, Terças, Quintas: 21:15 - 22:30",
                         ]}
-                        svg={[
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>,
-                            <circle cx="9" cy="7" r="4"></circle>,
-                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>,
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        svg={[]}
+                        whatYouWillLearn={[
+                            "Controlo corporal e aderência sem quimono",
+                            "Técnicas de finalização com foco em velocidade",
+                            "Defesas e raspagens adaptadas ao No-Gi",
+                            "Estratégias de luta baseadas em movimento e timing",
+                            "Melhoria da força funcional e resistência",
                         ]}
-                        whatYouWillLearn={["Fundamentos do Jiu-Jitsu",
-                            "Técnicas de defesa pessoal",
-                            "Posições básicas e avançadas",
-                            "Estratégias de competição",
-                            "Condicionamento físico",]}
+
                     />
 
                     <ClassesCard
                         title={"Kids"}
-                        description={"Fun and engaging classes for children ages 6-15. Focus on discipline, respect, and fitness."}
+                        description={"Aulas divertidas e educativas que desenvolvem disciplina, coordenação e confiança nas crianças."}
                         duration={"60 minutos"}
                         schedule={[
-                            "Terças - 18:30 e 19h30",
-                            "Sextas  - 18:30",
+                            "Terças: 18:30 - 19:30 e 19:30 - 20:30",
+                            "Sextas: 18:30 - 19:30",
                         ]}
                         svg={[
-                            <circle cx="12" cy="12" r="10"></circle>,
-                            <circle cx="12" cy="12" r="6"></circle>,
-                            <circle cx="12" cy="12" r="2"></circle>
+
                         ]}
-                        whatYouWillLearn={["Fundamentos do Jiu-Jitsu",
-                            "Técnicas de defesa pessoal",
-                            "Posições básicas e avançadas",
-                            "Estratégias de competição",
-                            "Condicionamento físico",]}
+                        whatYouWillLearn={[
+                            "Fundamentos do Jiu-Jitsu de forma divertida",
+                            "Técnicas simples de defesa pessoal",
+                            "Coordenação motora e equilíbrio",
+                            "Trabalho em equipa e respeito pelos colegas",
+                            "Disciplina, autoconfiança e espírito desportivo",
+                        ]}
+
                     />
                 </div>
             </LandingSection>
@@ -85,8 +83,8 @@ export default function LandingPage() {
                         name="Fabio Dorea"
                         belt="Faixa Preta"
                         specialties={["Auto-defesa", "Fundamentos", "Competição"]}
-                        description="Mais de 30 anos de experiência. Campeão nacional, vice-campeão europeu e professor de natação. Fábio é o exemplo vivo da força do desporto na construção de comunidades mais fortes."
-                        titles={["ibjjf 🥇3x 🥈1x ", "fpjjb 🥇3x 🥈5x ", "sjjif 🥇3x"]}
+                        description="Com mais de 30 anos de experiência. Campeão nacional, vice-campeão europeu e professor de natação. Fábio é o exemplo vivo da força do desporto."
+                        titles={["ibjjf", "fpjjb", "sjjif "]}
                         image="instructor0.jpg"
                     />
                     <InstructorCard
@@ -94,7 +92,7 @@ export default function LandingPage() {
                         belt="Faixa Preta"
                         specialties={["Técnicas Avançadas", "Estratégias de Luta"]}
                         description="Com uma abordagem única ao ensino, Max combina técnica e filosofia para ajudar os alunos a alcançarem o seu potencial máximo."
-                        titles={["ibjjf 🥇3x 🥈1x ", "fpjjb 🥇3x 🥈5x ", "sjjif 🥇3x"]}
+                        titles={["ibjjf", "fpjjb", "sjjif "]}
                         image="instructor2.jpg"
                     />
                     <InstructorCard
@@ -102,7 +100,7 @@ export default function LandingPage() {
                         belt="Faixa Castanha"
                         specialties={["Defesa Pessoal", "Técnicas de Chão"]}
                         description="Gonçalo é conhecido pela sua abordagem prática e eficaz ao ensino, ajudando os alunos a aplicarem técnicas em situações reais."
-                        titles={["ibjjf 🥇3x 🥈1x ", "fpjjb 🥇3x 🥈5x ", "sjjif 🥇3x"]}
+                        titles={["ibjjf", "fpjjb", "sjjif "]}
                         image="instructor1.jpg"
                     />
 
