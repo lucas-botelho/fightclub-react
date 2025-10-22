@@ -83,6 +83,15 @@ nav div {
     1px 1px 0 #141414;
 }
 
+/* hide scrollbars across browsers for horizontal carousels */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 :root {
   /* set header height once (adjust to your header height) */
   --header-height: 4rem; /* 64px */

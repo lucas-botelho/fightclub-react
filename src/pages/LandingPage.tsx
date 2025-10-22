@@ -1,5 +1,6 @@
 import ClassesCard from "../components/content/cards/classesCard";
 import InstructorCard from "../components/content/cards/instructorCard";
+import CardsSlider from "../components/layout/CardsSlider";
 import Hero from "../components/content/heroes/landingHero";
 import MainTitle from "../components/content/text/mainTitle";
 import SubTitle from "../components/content/text/subTitle";
@@ -12,7 +13,7 @@ export default function LandingPage() {
             <LandingSection id="classes">
                 <MainTitle text="Aulas" />
                 <SubTitle text="Descobre as nossas aulas de projetadas para todos os níveis e idades." />
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-xl ">
+                <CardsSlider ariaLabel="Classes carousel">
                     <ClassesCard
                         title={"Gi"}
                         description={"Treino técnico e estratégico com o quimono tradicional, focado no controlo e nas finalizações."}
@@ -70,12 +71,12 @@ export default function LandingPage() {
                         ]}
 
                     />
-                </div>
+                </CardsSlider>
             </LandingSection>
             <LandingSection id="instructors">
                 <MainTitle text="Conhece os teus instrutores" />
                 <SubTitle text="Aprende com instrutores de classe mundial, apaixonados por ensinar e dedicados ao teu crescimento." />
-                <div className=" grid grid-cols-1 md:grid-cols-3 gap-8 text-xl">
+                <CardsSlider ariaLabel="Instructors carousel">
                     <InstructorCard
                         name="Fabio Dorea"
                         belt="Faixa Preta"
@@ -84,6 +85,7 @@ export default function LandingPage() {
                         titles={["ibjjf", "fpjjb", "sjjif "]}
                         image="instructor0.jpg"
                     />
+
                     <InstructorCard
                         name="Max Fersan"
                         belt="Faixa Preta"
@@ -92,6 +94,7 @@ export default function LandingPage() {
                         titles={["ibjjf", "fpjjb", "sjjif "]}
                         image="instructor2.jpg"
                     />
+
                     <InstructorCard
                         name="Gonçalo Pinto"
                         belt="Faixa Castanha"
@@ -100,8 +103,7 @@ export default function LandingPage() {
                         titles={["ibjjf", "fpjjb", "sjjif "]}
                         image="instructor1.jpg"
                     />
-
-                </div>
+                </CardsSlider>
 
             </LandingSection>
             <LandingSection id="membership">
