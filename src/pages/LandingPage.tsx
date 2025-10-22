@@ -108,7 +108,7 @@ export default function LandingPage() {
             </LandingSection>
             <LandingSection id="membership">
                 <MainTitle text="Junta-te a nós" />
-                <div className=" grid grid-cols-1 md:grid-cols-3 gap-8 text-xl my-8">
+                <CardsSlider ariaLabel="Membership carousel">
                     <div className="rounded-lg border border-solid border-[#333333] p-6 flex flex-col items-center hover-lift">
                         <h4 className="text-dark-title-primary font-bold mb-2">1 Treino por Semana</h4>
                         <div className="flex flex-row gap-1 items-baseline">
@@ -198,7 +198,7 @@ export default function LandingPage() {
                             </li>
                         </ul>
                     </div>
-                </div>
+                </CardsSlider>
 
             </LandingSection>
         </>

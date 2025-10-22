@@ -13,11 +13,13 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
         if (typeof window === 'undefined') return false;
         return window.matchMedia('(max-width: 767.98px)').matches;
     });
+    const isAdjustingRef = useRef(false);
+    const scrollEndTimeoutRef = useRef<number | null>(null);
 
-    // carousel state/hooks (declare unconditionally to keep hooks order stable)
+    // carousel state
     const loopItems = [...items, ...items, ...items];
     const midOffset = n;
-    const initial = midOffset + Math.floor(n / 2);
+    const initial = midOffset;
     const [active, setActive] = useState<number>(initial);
 
     const scrollToIndex = (index: number, behavior: ScrollBehavior = 'smooth') => {
@@ -38,7 +40,7 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
         return () => mq.removeEventListener('change', onChange);
     }, []);
 
-    // initialize position to middle copy without animation when mobile
+    // initialize position to middle copy without animation
     useEffect(() => {
         if (!isMobile) return;
         const t = setTimeout(() => scrollToIndex(initial, 'auto'), 0);
@@ -46,12 +48,14 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
     }, [isMobile]);
 
     const prev = () => {
+        if (isAdjustingRef.current) return;
         const nextIndex = active - 1;
         setActive(nextIndex);
         scrollToIndex(nextIndex);
     };
 
     const next = () => {
+        if (isAdjustingRef.current) return;
         const nextIndex = active + 1;
         setActive(nextIndex);
         scrollToIndex(nextIndex);
@@ -61,47 +65,68 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
         if (!isMobile) return;
         const el = containerRef.current;
         if (!el) return;
-        let raf = 0;
-        const onScroll = () => {
-            cancelAnimationFrame(raf);
-            raf = requestAnimationFrame(() => {
-                const center = el.scrollLeft + el.clientWidth / 2;
-                let closest = 0;
-                let minDist = Infinity;
-                for (let i = 0; i < el.children.length; i++) {
-                    const child = el.children[i] as HTMLElement;
-                    const childCenter = child.offsetLeft + child.clientWidth / 2;
-                    const dist = Math.abs(center - childCenter);
-                    if (dist < minDist) {
-                        minDist = dist;
-                        closest = i;
-                    }
-                }
 
+        const handleScrollEnd = () => {
+            if (isAdjustingRef.current) return;
+
+            const center = el.scrollLeft + el.clientWidth / 2;
+            let closest = 0;
+            let minDist = Infinity;
+
+            for (let i = 0; i < el.children.length; i++) {
+                const child = el.children[i] as HTMLElement;
+                const childCenter = child.offsetLeft + child.clientWidth / 2;
+                const dist = Math.abs(center - childCenter);
+                if (dist < minDist) {
+                    minDist = dist;
+                    closest = i;
+                }
+            }
+
+            // Check if we're in a cloned region
+            if (closest < n || closest >= n * 2) {
+                isAdjustingRef.current = true;
+
+                // Calculate the equivalent position in the middle section
+                let mappedIndex: number;
                 if (closest < n) {
-                    const mapped = closest + n;
-                    setActive(mapped);
-                    scrollToIndex(mapped, 'auto');
-                    return;
+                    // We're in the first copy, map to middle
+                    mappedIndex = closest + n;
+                } else {
+                    // We're in the last copy, map to middle
+                    mappedIndex = closest - n;
                 }
 
-                if (closest >= n * 2) {
-                    const mapped = closest - n;
-                    setActive(mapped);
-                    scrollToIndex(mapped, 'auto');
-                    return;
-                }
+                // Wait for any ongoing scroll animation to complete
+                setTimeout(() => {
+                    scrollToIndex(mappedIndex, 'auto');
+                    setActive(mappedIndex);
 
-                if (closest !== active) setActive(closest);
-            });
+                    // Small delay before allowing next interaction
+                    setTimeout(() => {
+                        isAdjustingRef.current = false;
+                    }, 50);
+                }, 300);
+            } else {
+                setActive(closest);
+            }
+        };
+
+        const onScroll = () => {
+            if (scrollEndTimeoutRef.current) {
+                clearTimeout(scrollEndTimeoutRef.current);
+            }
+            scrollEndTimeoutRef.current = window.setTimeout(handleScrollEnd, 150);
         };
 
         el.addEventListener('scroll', onScroll, { passive: true });
         return () => {
             el.removeEventListener('scroll', onScroll);
-            cancelAnimationFrame(raf);
+            if (scrollEndTimeoutRef.current) {
+                clearTimeout(scrollEndTimeoutRef.current);
+            }
         };
-    }, [active, n, isMobile]);
+    }, [n, isMobile]);
 
     useEffect(() => {
         if (!isMobile) return;
@@ -143,11 +168,11 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
                 role="region"
                 tabIndex={0}
                 aria-label={ariaLabel}
-                className="overflow-x-auto no-scrollbar scroll-snap-x snap-mandatory flex gap-6 py-4 px-2 outline-none"
+                className="overflow-x-auto no-scrollbar scroll-snap-x snap-mandatory flex gap-6 py-4 px-2 outline-none items-stretch"
                 style={{ WebkitOverflowScrolling: 'touch' }}
             >
                 {loopItems.map((child, i) => (
-                    <div key={i} className="snap-center min-w-[85%] md:min-w-[30%] lg:min-w-[28%]">
+                    <div key={i} className="snap-center min-w-[85%] md:min-w-[30%] lg:min-w-[28%] flex">
                         {child}
                     </div>
                 ))}
@@ -167,11 +192,13 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
                         key={i}
                         aria-label={`Go to slide ${i + 1}`}
                         onClick={() => {
+                            if (isAdjustingRef.current) return;
                             const target = midOffset + i;
                             setActive(target);
                             scrollToIndex(target);
                         }}
-                        className={`w-2 h-2 rounded-full ${i === logicalActive ? 'bg-dark-title-secondary' : 'bg-gray-400/50'}`}
+                        className={`w-2 h-2 rounded-full transition-colors ${i === logicalActive ? 'bg-gray-800' : 'bg-gray-400/50'
+                            }`}
                     />
                 ))}
             </div>

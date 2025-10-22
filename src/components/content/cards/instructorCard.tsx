@@ -11,8 +11,8 @@ type CardProps = {
 
 const InstructorCard: React.FC<CardProps> = (props) => {
     return (
-        <div className="border border-solid border-[#333333] rounded-lg hover-lift">
-            <div className="relative w-full overflow-hidden rounded-t-lg md:h-96">
+        <div className="border border-solid border-[#333333] rounded-lg hover-lift h-full flex flex-col">
+            <div className="relative w-full overflow-hidden rounded-t-lg h-64 md:h-96 flex-shrink-0">
                 <img
                     src={props.image || "instructor.jpg"}
                     alt="Instructor"

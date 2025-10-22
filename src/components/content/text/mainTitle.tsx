@@ -44,7 +44,7 @@ export default function MainTitle({ text }: MainTitleProps) {
         <h2
             ref={ref}
             className={
-                `font-semibold text-center mb-4 text-dark-title-secondary ` +
+                `font-semibold text-center mb-10 text-dark-title-secondary ` +
                 (wrapped ? "text-4xl md:text-6xl" : "text-6xl")
             }
         >
