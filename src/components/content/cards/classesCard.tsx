@@ -3,14 +3,13 @@ import React from 'react';
 type SvgTextCardProps = {
     title: string;
     description: string;
-    duration: string;
     schedule: string[];
     svg: React.ReactNode[];
     whatYouWillLearn: string[];
 };
 
 const ClassesCard: React.FC<SvgTextCardProps> = (props) => {
-    const { title, description, duration, schedule, svg } = props;
+    const { title, description, schedule, svg } = props;
     return (
 
         <div className="p-8 rounded-lg bg-dark-background-secondary border border-solid border-[#333333] hover-lift  relative flex flex-col h-full">

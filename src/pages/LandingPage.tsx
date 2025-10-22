@@ -16,7 +16,6 @@ export default function LandingPage() {
                     <ClassesCard
                         title={"Gi"}
                         description={"Treino técnico e estratégico com o quimono tradicional, focado no controlo e nas finalizações."}
-                        duration={"60 minutos"}
                         schedule={[
                             "Terças e Quintas: 12:15 - 13:30",
                             "Sextas: 19:15 - 20:30",
@@ -36,7 +35,6 @@ export default function LandingPage() {
                     <ClassesCard
                         title={"No-Gi"}
                         description={"Treino dinâmico sem quimono, com foco na agilidade, aderência e transições rápidas."}
-                        duration={"60 minutos"}
                         schedule={[
                             "Terças e Quintas: 12:15 - 13:30",
                             "Sextas: 19:15 - 20:30",
@@ -56,7 +54,6 @@ export default function LandingPage() {
                     <ClassesCard
                         title={"Kids"}
                         description={"Aulas divertidas e educativas que desenvolvem disciplina, coordenação e confiança nas crianças."}
-                        duration={"60 minutos"}
                         schedule={[
                             "Terças: 18:30 - 19:30 e 19:30 - 20:30",
                             "Sextas: 18:30 - 19:30",
