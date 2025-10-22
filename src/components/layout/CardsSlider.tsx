@@ -9,12 +9,15 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
     const containerRef = useRef<HTMLDivElement | null>(null);
     const items = React.Children.toArray(children);
     const n = items.length;
-    // tripled items to allow infinite scroll
+    const [isMobile, setIsMobile] = useState<boolean>(() => {
+        if (typeof window === 'undefined') return false;
+        return window.matchMedia('(max-width: 767.98px)').matches;
+    });
+
+    // carousel state/hooks (declare unconditionally to keep hooks order stable)
     const loopItems = [...items, ...items, ...items];
-
-    const midOffset = n; // start in middle copy
+    const midOffset = n;
     const initial = midOffset + Math.floor(n / 2);
-
     const [active, setActive] = useState<number>(initial);
 
     const scrollToIndex = (index: number, behavior: ScrollBehavior = 'smooth') => {
@@ -26,11 +29,21 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
         el.scrollTo({ left, behavior });
     };
 
-    // initialize position to middle copy without animation
     useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const mq = window.matchMedia('(min-width: 768px)');
+        const onChange = () => setIsMobile(!mq.matches);
+        onChange();
+        mq.addEventListener('change', onChange);
+        return () => mq.removeEventListener('change', onChange);
+    }, []);
+
+    // initialize position to middle copy without animation when mobile
+    useEffect(() => {
+        if (!isMobile) return;
         const t = setTimeout(() => scrollToIndex(initial, 'auto'), 0);
         return () => clearTimeout(t);
-    }, []);
+    }, [isMobile]);
 
     const prev = () => {
         const nextIndex = active - 1;
@@ -44,11 +57,10 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
         scrollToIndex(nextIndex);
     };
 
-    // when user scrolls, update active and handle jumping when in cloned regions
     useEffect(() => {
+        if (!isMobile) return;
         const el = containerRef.current;
         if (!el) return;
-
         let raf = 0;
         const onScroll = () => {
             cancelAnimationFrame(raf);
@@ -66,16 +78,13 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
                     }
                 }
 
-                // if we're in the first copy, jump to middle copy equivalent
                 if (closest < n) {
                     const mapped = closest + n;
                     setActive(mapped);
-                    // jump without animation
                     scrollToIndex(mapped, 'auto');
                     return;
                 }
 
-                // if we're in the last copy, jump to middle copy equivalent
                 if (closest >= n * 2) {
                     const mapped = closest - n;
                     setActive(mapped);
@@ -88,15 +97,14 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
         };
 
         el.addEventListener('scroll', onScroll, { passive: true });
-
         return () => {
             el.removeEventListener('scroll', onScroll);
             cancelAnimationFrame(raf);
         };
-    }, [active, n]);
+    }, [active, n, isMobile]);
 
-    // keyboard navigation when focused
     useEffect(() => {
+        if (!isMobile) return;
         const el = containerRef.current;
         if (!el) return;
         const handleKey = (e: KeyboardEvent) => {
@@ -105,10 +113,20 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
         };
         el.addEventListener('keydown', handleKey as any);
         return () => el.removeEventListener('keydown', handleKey as any);
-    }, [active]);
+    }, [active, isMobile]);
 
-    // logical active index for dots (0..n-1)
     const logicalActive = ((active % n) + n) % n;
+
+    // Desktop: render regular grid
+    if (!isMobile) {
+        return (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {items.map((child, i) => (
+                    <div key={i}>{child}</div>
+                ))}
+            </div>
+        );
+    }
 
     return (
         <div className="relative">
@@ -143,7 +161,6 @@ export default function CardsSlider({ children, ariaLabel = 'Cards carousel' }: 
                 ›
             </button>
 
-            {/* pagination dots (logical index) */}
             <div className="flex items-center justify-center gap-2 mt-4">
                 {items.map((_, i) => (
                     <button
