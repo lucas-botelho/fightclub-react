@@ -158,7 +158,7 @@ export default function LandingPage() {
                         <h2 className="text-center">Melhor valor para atletas dedicados e de competição</h2>
                         <ul className="list-none text-dark-text-primary space-y-2 text-lg my-4 ">
                             <li className="before:content-['✔'] before:text-dark-title-secondary before:mr-2">
-                                Aulas ilimitadas
+                                Livre trânsito
                             </li>
                             <li className="before:content-['✔'] before:text-dark-title-secondary before:mr-2">
                                 Treino de competição
@@ -168,9 +168,6 @@ export default function LandingPage() {
                             </li>
                             <li className="before:content-['✔'] before:text-dark-title-secondary before:mr-2">
                                 Sessões Open Mat
-                            </li>
-                            <li className="before:content-['✔'] before:text-dark-title-secondary before:mr-2">
-                                Oferta T-Shirt Fight Club BJJ
                             </li>
                         </ul>
                     </div>
