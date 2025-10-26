@@ -5,6 +5,7 @@ import Hero from "../components/content/heroes/landingHero";
 import MainTitle from "../components/content/text/mainTitle";
 import SubTitle from "../components/content/text/subTitle";
 import LandingSection from "../components/layout/landingSection";
+import MapSection from "../components/layout/MapSection.tsx";
 
 export default function LandingPage() {
     return (
@@ -197,6 +198,10 @@ export default function LandingPage() {
                     </div>
                 </CardsSlider>
 
+            </LandingSection>
+            <LandingSection id="location">
+                <MainTitle text="Onde treinamos" />
+                <MapSection />
             </LandingSection>
         </>
     );
