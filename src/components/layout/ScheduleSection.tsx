@@ -1,6 +1,5 @@
-import React from "react";
 import {ClassType} from "./ClassType.tsx";
-import {InstructorType} from "./InstructorType.tsx";
+import InstructorType from "./InstructorType.tsx";
 
 type ClassItem = {
   time: string;
