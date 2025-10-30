@@ -6,6 +6,7 @@ import MainTitle from "../components/content/text/mainTitle";
 import SubTitle from "../components/content/text/subTitle";
 import LandingSection from "../components/layout/landingSection";
 import MapSection from "../components/layout/MapSection.tsx";
+import WeeklySchedule from "../components/layout/ScheduleSection.tsx";
 
 export default function LandingPage() {
     return (
@@ -203,6 +204,12 @@ export default function LandingPage() {
                 <MainTitle text="Onde treinamos" />
                 <MapSection />
             </LandingSection>
+
+            <LandingSection id="location">
+                <MainTitle text="Horário de treinos" />
+                <WeeklySchedule/>
+            </LandingSection>
+
         </>
     );
 }
